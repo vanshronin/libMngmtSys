@@ -1,9 +1,9 @@
 library = []
 
 def addBook():
-    id = input("Enter Book ID:").strip()
+    bid = input("Enter Book ID:").strip()
     for book in library:
-        if book["id"] == id:
+        if book["id"] == bid:
             print("This Book ID already used, Try Different ID")
             return
     ttl = input("Enter Book Title:")
@@ -11,7 +11,7 @@ def addBook():
     gen = input("Enter Genre:")
     lan = input("Enter Language:")
 
-    book = { "id":id, "ttl":ttl, "auth":auth, "gen":gen, "lan":lan, "status": False }
+    book = { "id":bid, "ttl":ttl, "auth":auth, "gen":gen, "lan":lan, "status": False }
 
     library.append(book)
 
@@ -29,9 +29,9 @@ def viewBook():
     print()
 
 def issueBook():
-    id = input("Enter Book ID:")
+    bid = input("Enter Book ID:")
     for book in library:
-        if book["id"] == id:
+        if book["id"] == bid:
             if not book["status"]:
                 book["status"] = True
                 print("Book Issued Sucessfully")
@@ -43,9 +43,9 @@ def issueBook():
     print()
 
 def returnBook():
-    id = input("Enter Book ID:")
+    bid = input("Enter Book ID:")
     for book in library:
-        if book["id"] == id:
+        if book["id"] == bid:
             if book["status"]:
                 book["status"] = False
                 print("Book Returned Sucessfully")
