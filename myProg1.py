@@ -4,7 +4,7 @@ def addBook():
     bid = input("Enter Book ID:").strip()
     for book in library:
         if book["id"] == bid:
-            print("This Book ID already used, Try Different ID")
+            print("This Book ID already exists, Try Different ID X(")
             return
     ttl = input("Enter Book Title:")
     auth = input("Enter Author Name:")
@@ -20,7 +20,7 @@ def addBook():
 
 def viewBook():
     if not library:
-        print("Sorry library is empty")
+        print("Sorry library is empty :(")
 
     print("\n---List Of Books In Library---")
     for book in library:
@@ -34,12 +34,12 @@ def issueBook():
         if book["id"] == bid:
             if not book["status"]:
                 book["status"] = True
-                print("Book Issued Sucessfully")
+                print("\nBook Issued Successfully!!")
             else:
-                print("Book Already Issued")
+                print("\nBook Already Issued :(")
             return
 
-    print("No Records Found")
+    print("\nNo Records Found X(")
     print()
 
 def returnBook():
@@ -48,11 +48,11 @@ def returnBook():
         if book["id"] == bid:
             if book["status"]:
                 book["status"] = False
-                print("Book Returned Sucessfully")
+                print("\nBook Returned Successfully!!")
             else:
-                print("This Book Was Not Issued")
+                print("\nThis Book Was Not Issued :(")
             return
-    print("No Records Found")
+    print("\nNo Records Found X(")
     print()
 
 def menu():
@@ -63,9 +63,10 @@ def menu():
         print("---> 2. View Book")
         print("---> 3. Issue Book")
         print("---> 4. Return Book")
-        print("---> 5. Exit The Menu")
+        print("---> 5. Exit The Menu\n")
 
         ch = input("Enter Your Choice:")
+        print()
         if ch == "1":
             addBook()
         elif ch == "2":
@@ -75,10 +76,9 @@ def menu():
         elif ch == "4":
             returnBook()
         elif ch == "5":
-            print("Exiting The Menu...")
+            print("\nExiting The Menu...")
             break
         else:
-            print("Invalid Choice")
+            print("\nInvalid Choice")
 
 menu()
-
