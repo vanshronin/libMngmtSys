@@ -1,19 +1,51 @@
-# Library Management System (libMngmtSys)
+# libMngmtSys 
 
-## About
-This is my first Python project — a simple Library Management System.   
-It’s a beginner-friendly project where I practiced using lists, dictionaries, and functions.
+This is a basic Library Management System made using Python.  
+I started this as a beginner project to practice core programming concepts like functions, loops, conditions, and handling user input.
 
-## What it does
-- Add a book
-- View all books
-- Issue a book
-- Return a book
-- Prevent duplicate book IDs
-- Handles empty library cases
+The project is still simple, but it helped me understand how real logic works when building something from scratch (especially debugging 😅).
 
-## Future improvements
-- Add search functionality
-- Use SQL database instead of a list
-- Add option to delete books
-- Maybe add a simple GUI
+---
+
+## Features
+
+- Add new books  
+- View all books in the library  
+- Issue a book  
+- Return a book  
+- Search books by ID or title (supports partial match)
+
+---
+
+## What I Learned
+
+- How to structure a program using functions  
+- Handling lists and dictionaries in Python  
+- Debugging issues caused by loops and conditions  
+- Writing logic for real-world scenarios (like book issuing system)  
+- Taking input and making it more reliable using `.strip()` and `.lower()`
+
+---
+
+## Limitations (for now)
+
+- Data is not saved permanently (resets after program ends)  
+- No database integration yet  
+- Basic command-line interface only  
+
+---
+
+## Future Improvements
+
+- Connect with MySQL database  
+- Store data permanently  
+- Improve search functionality  
+- Add user authentication (maybe)  
+- Better UI (maybe using Tkinter or web later)
+
+---
+
+## Note
+
+This is one of my first projects, so it's not perfect.
+I'm planning to keep improving it step by step as I learn more.
