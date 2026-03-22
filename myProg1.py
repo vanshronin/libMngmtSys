@@ -55,6 +55,24 @@ def returnBook():
     print("\nNo Records Found X(")
     print()
 
+def searchBook():
+    if not library:
+        print("No Books in Library")
+        return
+    key = input("Enter Book ID or Book Title:").strip().lower()
+    found = False
+    for book in library:
+        if book["id"] == key or key in book["ttl"].lower():
+            if not found:
+                print("\nBooks Found--->")
+                found = True
+            status = "Issued" if book["status"] else "Available"
+            print(f'\nBook ID = {book["id"]} | Title = {book["ttl"]} | Author = {book["auth"]} | Genre = {book["gen"]} | Language = {book["lan"]} | Status = {status}')
+    if not found:
+        print("No Records Found")
+    print()
+
+
 def menu():
     while True:
         print("\n===Welcome To Library Management System===")
@@ -63,7 +81,8 @@ def menu():
         print("---> 2. View Book")
         print("---> 3. Issue Book")
         print("---> 4. Return Book")
-        print("---> 5. Exit The Menu\n")
+        print("---> 5. Search Book")
+        print("---> 6. Exit The Menu")
 
         ch = input("Enter Your Choice:")
         print()
@@ -76,6 +95,8 @@ def menu():
         elif ch == "4":
             returnBook()
         elif ch == "5":
+            searchBook()
+        elif ch == "6":
             print("\nExiting The Menu...")
             break
         else:
