@@ -1,9 +1,7 @@
-# libMngmtSys 
+# libMngmtSys
 
-This is a basic Library Management System made using Python.  
-I started this as a beginner project to practice core programming concepts like functions, loops, conditions, and handling user input.
-
-The project is still simple, but it helped me understand how real logic works when building something from scratch (especially debugging 😅).
+A basic Library Management System made using Python.  
+Started as a beginner project to practice programming concepts.
 
 ---
 
@@ -19,33 +17,23 @@ The project is still simple, but it helped me understand how real logic works wh
 
 ## What I Learned
 
-- How to structure a program using functions  
-- Handling lists and dictionaries in Python  
-- Debugging issues caused by loops and conditions  
-- Writing logic for real-world scenarios (like book issuing system)  
-- Taking input and making it more reliable using `.strip()` and `.lower()`
+- Program structure using functions  
+- Lists and dictionaries in Python  
+- Debugging loops and conditions  
+- Real-world logic (book issuing)  
+- Using `.strip()` and `.lower()` for reliable input
 
 ---
 
-## Limitations (for now)
+## Limitations
 
 - Data is not saved permanently (resets after program ends)  
-- No database integration yet  
 - Basic command-line interface only  
 
 ---
 
-## Future Improvements
+## Progress / Updates
 
-- Connect with MySQL database  
-- Store data permanently  
-- Improve search functionality  
-- Add user authentication (maybe)  
-- Better UI (maybe using Tkinter or web later)
-
----
-
-## Note
-
-This is one of my first projects, so it's not perfect.
-I'm planning to keep improving it step by step as I learn more.
+- Day 1: Basic LMS using Python  
+- Day 2: Added search functionality  
+- Day 3: Started MySQL integration for persistent storage  
