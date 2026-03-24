@@ -1,3 +1,21 @@
+import mysql.connector
+
+conn = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="5126",
+    database="libMngmtSys"
+)
+
+cursor = conn.cursor()
+cursor.execute("INSERT INTO books(ID,Title,Author,Genre,Language,Status) VALUES(%s,%s,%s,%s,%s,%s)",
+               ("101", "Demo Book", "Test Author", "Fiction", "English", False)
+               )
+
+conn.commit()
+
+print("Book inserted successfully")
+
 library = []
 
 def addBook():
