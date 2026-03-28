@@ -27,6 +27,11 @@ def addBook():
     print("Book Added Successfully!\n")
 
 
+# SQL integration pending
+
+
+
+
 def viewBook():
     cursor.execute("SELECT * FROM books")
     records = cursor.fetchall()
