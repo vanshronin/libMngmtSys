@@ -18,7 +18,8 @@ def addBook():
 
     cursor.execute(
         "INSERT INTO books(ID, Title, Author, Genre, Language, Status) VALUES(%s, %s, %s, %s, %s, %s)",
-        (bid, ttl, auth, gen, lan, False))
+        (bid, ttl, auth, gen, lan, False)
+    )
 
     conn.commit()
 
@@ -95,4 +96,22 @@ def searchBook():
 
         print(f' Book ID = {books[0]} | Title = {books[1]} | Author = {books[2]} | Genre = {books[3]} | Language = {books[4]} | Status = {status}')
 
-issueBook()
+
+def deleteBook():
+    bid = input("Enter Book ID:")
+
+    cursor.execute("SELECT * From books WHERE ID = %s",(bid,))
+    result = cursor.fetchone()
+
+    if not result:
+        print("No Records Found X(")
+        return
+    if result[5] == 1:
+        print("This Book is Issued, First Return The Book")
+        return
+    cursor.execute("DELETE FROM Books WHERE ID = %s",(bid,))
+    conn.commit()
+    print("Book Deleted Successfully :)")
+
+
+
