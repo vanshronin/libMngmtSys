@@ -1,6 +1,5 @@
 from db import conn, cursor
 
-library = []
 
 def addBook():
     bid = input("Enter Book ID: ").strip()
@@ -19,17 +18,11 @@ def addBook():
 
     cursor.execute(
         "INSERT INTO books(ID, Title, Author, Genre, Language, Status) VALUES(%s, %s, %s, %s, %s, %s)",
-        (bid, ttl, auth, gen, lan, False)
-    )
+        (bid, ttl, auth, gen, lan, False))
 
     conn.commit()
 
     print("Book Added Successfully!\n")
-
-
-# SQL integration pending
-
-
 
 
 def viewBook():
@@ -42,55 +35,64 @@ def viewBook():
 
     print("\n---List Of Books In Library---")
 
-    for book in records:
-        status = "Issued" if book[5] else "Available"
+    for books in records:
+        status = "Issued" if books[5] else "Available"
 
-        print(f' Book ID = {book[0]} | Title = {book[1]} | Author = {book[2]} | Genre = {book[3]} | Language = {book[4]} | Status = {status}')
+        print(f' Book ID = {books[0]} | Title = {books[1]} | Author = {books[2]} | Genre = {books[3]} | Language = {books[4]} | Status = {status}')
 
     print()
 
-viewBook()
 
-'''def issueBook():
-    bid = input("Enter Book ID:")
-    for book in library:
-        if book["id"] == bid:
-            if not book["status"]:
-                book["status"] = True
-                print("\nBook Issued Successfully!!")
-            else:
-                print("\nBook Already Issued :(")
-            return
+def issueBook():
+    bid = input("Enter Book ID:").strip()
+    cursor.execute("SELECT Status FROM books WHERE ID = %s",(bid,))
+    result = cursor.fetchone()
 
-    print("\nNo Records Found X(")
-    print()
+    if not result:
+        print("\n No Book Records Found X(")
+        return
+    if result[0] == 1:
+        print("\n Book Already Issued :(")
+        return
+
+    cursor.execute("UPDATE books SET Status = %s WHERE ID = %s",(1,bid))
+    conn.commit()
+    print("\nBook Issued Successfully :)")
+
+
 
 def returnBook():
-    bid = input("Enter Book ID:")
-    for book in library:
-        if book["id"] == bid:
-            if book["status"]:
-                book["status"] = False
-                print("\nBook Returned Successfully!!")
-            else:
-                print("\nThis Book Was Not Issued :(")
-            return
-    print("\nNo Records Found X(")
-    print()
+    bid = input("Enter Book ID:").strip()
+    cursor.execute("SELECT Status FROM books WHERE ID = %s",(bid,))
+    result = cursor.fetchone()
+    if not result:
+       print("No Record Found X(")
+       return
+    if result[0] == 0:
+        print("This Book Was Not Issued :(")
+        return
+
+    cursor.execute("UPDATE books SET Status = %s WHERE ID = %s",(0,bid))
+    conn.commit()
+    print("Book Returned Successfully :)")
+
 
 def searchBook():
-    if not library:
-        print("No Books in Library")
+    key = input("\nEnter Book ID, Title, Genre:").strip().lower()
+
+    cursor.execute("SELECT * FROM books WHERE ID = %s OR LOWER(Title) LIKE %s OR LOWER(Genre) LIKE %s",(key,f"%{key}%",f"%{key}%"))
+
+    result = cursor.fetchall()
+
+    if not result:
+        print("No Record Found :(")
         return
-    key = input("Enter Book ID or Book Title:").strip().lower()
-    found = False
-    for book in library:
-        if book["id"] == key or key in book["ttl"].lower():
-            if not found:
-                print("\nBooks Found--->")
-                found = True
-            status = "Issued" if book["status"] else "Available"
-            print(f'\nBook ID = {book["id"]} | Title = {book["ttl"]} | Author = {book["auth"]} | Genre = {book["gen"]} | Language = {book["lan"]} | Status = {status}')
-    if not found:
-        print("No Records Found")
-    print()'''
+
+    print("\n Books Matching Your Search:")
+
+    for books in result:
+        status = "Issued" if books[5] else "Available"
+
+        print(f' Book ID = {books[0]} | Title = {books[1]} | Author = {books[2]} | Genre = {books[3]} | Language = {books[4]} | Status = {status}')
+
+issueBook()
