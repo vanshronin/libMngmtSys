@@ -7,4 +7,4 @@ conn = mysql.connector.connect(
     database="libMngmtSys"
 )
 
-cursor = conn.cursor()
+cursor = conn.cursor(dictionary = True)
